@@ -5,6 +5,11 @@ var camera_rotation:Vector3
 
 var zoom:float = 30.0 # 30 = Standard zoom level, in meters
 
+const MIN_ZOOM:float = 15.0
+const MAX_ZOOM:float = 80.0
+const ZOOM_STEP:float = 5.0
+const TRACKPAD_PAN_SPEED:float = 0.08
+
 @onready var camera = $Camera
 
 func _ready():
@@ -44,10 +49,10 @@ func handle_input(_delta):
 	# Zoom in/out
 	
 	if Input.is_action_just_released("zoom_in"):
-		zoom = max(15, zoom - 5) # 15 = Minimum zoom level, in meters
+		zoom = clampf(zoom - ZOOM_STEP, MIN_ZOOM, MAX_ZOOM)
 		
 	if Input.is_action_just_released("zoom_out"):
-		zoom = min(80, zoom + 5) # 80 = Maximum zoom level, in meters
+		zoom = clampf(zoom + ZOOM_STEP, MIN_ZOOM, MAX_ZOOM)
 	
 	# Back to center
 	
@@ -61,3 +66,10 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("camera_rotate"):
 			camera_rotation += Vector3(0, -event.relative.x / 10, 0)
+
+	if event is InputEventPanGesture:
+		var pan := Vector3(-event.delta.x, 0, -event.delta.y)
+		camera_position += pan.rotated(Vector3.UP, rotation.y) * TRACKPAD_PAN_SPEED
+
+	if event is InputEventMagnifyGesture:
+		zoom = clampf(zoom / event.factor, MIN_ZOOM, MAX_ZOOM)
