@@ -20,11 +20,11 @@ This package includes a basic template for a 3D city builder in Godot 4.6. Inclu
 | --- | --- |
 | <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>Two-finger drag</kbd> | Move camera |
 | <kbd>F</kbd> | Camera to center |
-| <kbd>Middle mouse button</kbd> | Hold to rotate camera |
+| <kbd>Middle mouse button</kbd> <kbd>Two-finger twist</kbd> | Rotate camera |
 | <kbd>Scroll wheel</kbd> <kbd>Pinch</kbd> | Zoom |
 | <kbd>Left mouse button</kbd> | Place building |
-| <kbd>DEL</kbd> | Remove building |
-| <kbd>Right mouse button</kbd> | Rotate building |
+| <kbd>DEL</kbd> <kbd>Long press</kbd> | Remove building |
+| <kbd>Right mouse button</kbd> <kbd>Two-finger tap</kbd> | Rotate building |
 | <kbd>Q</kbd> <kbd>E</kbd>  | Toggle between buildings |
 | <kbd>F1</kbd> | Save |
 | <kbd>F2</kbd> | Load |
