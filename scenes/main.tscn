@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://vgwrcfy1qawf"]
+[gd_scene format=3 uid="uid://vgwrcfy1qawf"]
 
 [ext_resource type="Script" uid="uid://76g8ejmdibal" path="res://scripts/builder.gd" id="1_jybm7"]
 [ext_resource type="Environment" uid="uid://jbptgqvstei3" path="res://scenes/main-environment.tres" id="1_yndf3"]
@@ -23,6 +23,7 @@
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="16_vlub6"]
 [ext_resource type="Texture2D" uid="uid://bng0d1sou7c8a" path="res://sprites/coin.png" id="17_cjamx"]
 [ext_resource type="Texture2D" uid="uid://ciwbdik3tmxtp" path="res://sprites/instructions.png" id="22_pm3ni"]
+[ext_resource type="Script" uid="uid://bkw0o0vnjbk1c" path="res://scripts/touch_controls.gd" id="24_og1vs"]
 [ext_resource type="AudioStream" uid="uid://wvfsgkl8qob6" path="res://sounds/ambience.ogg" id="24_y6deb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q176i"]
@@ -30,9 +31,9 @@ font = ExtResource("16_vlub6")
 font_size = 24
 shadow_color = Color(0, 0, 0, 0.392157)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1677697863]
 
-[node name="Builder" type="Node3D" parent="." node_paths=PackedStringArray("selector", "selector_container", "view_camera", "gridmap", "cash_display")]
+[node name="Builder" type="Node3D" parent="." unique_id=1638184130 node_paths=PackedStringArray("selector", "selector_container", "view_camera", "gridmap", "cash_display")]
 script = ExtResource("1_jybm7")
 structures = Array[ExtResource("2_54v6r")]([ExtResource("2_bwyku"), ExtResource("3_o6o81"), ExtResource("3_6fpyf"), ExtResource("7_kqu4g"), ExtResource("8_1swhv"), ExtResource("4_b632v"), ExtResource("8_4il2q"), ExtResource("5_v5o2m"), ExtResource("6_f4603"), ExtResource("10_84or2"), ExtResource("12_8obn7"), ExtResource("13_ut2cy"), ExtResource("9_ifw7y"), ExtResource("10_vaeah"), ExtResource("13_t5d2v")])
 selector = NodePath("Selector")
@@ -41,43 +42,43 @@ view_camera = NodePath("../View/Camera")
 gridmap = NodePath("../GridMap")
 cash_display = NodePath("../CanvasLayer/Top/Cash")
 
-[node name="Selector" type="Node3D" parent="Builder"]
+[node name="Selector" type="Node3D" parent="Builder" unique_id=1578195320]
 
-[node name="Sprite" type="Sprite3D" parent="Builder/Selector"]
+[node name="Sprite" type="Sprite3D" parent="Builder/Selector" unique_id=1402305460]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.06, 0)
 texture = ExtResource("4_wr1wv")
 
-[node name="Container" type="Node3D" parent="Builder/Selector"]
+[node name="Container" type="Node3D" parent="Builder/Selector" unique_id=1915626302]
 
-[node name="View" type="Node3D" parent="."]
+[node name="View" type="Node3D" parent="." unique_id=1805684507]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 0, 0, 0)
 script = ExtResource("8_yovpv")
 
-[node name="Camera" type="Camera3D" parent="View"]
+[node name="Camera" type="Camera3D" parent="View" unique_id=557986798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 environment = ExtResource("1_yndf3")
 fov = 20.0
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." unique_id=422988228]
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=573376344]
 transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2005266023]
 
-[node name="Top" type="Control" parent="CanvasLayer"]
+[node name="Top" type="Control" parent="CanvasLayer" unique_id=753037128]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Top"]
+[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Top" unique_id=541010404]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 24.0
@@ -86,7 +87,7 @@ offset_bottom = 152.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_cjamx")
 
-[node name="Cash" type="Label" parent="CanvasLayer/Top"]
+[node name="Cash" type="Label" parent="CanvasLayer/Top" unique_id=702917432]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 27.0
@@ -95,7 +96,7 @@ offset_bottom = 101.0
 text = "$10,000"
 label_settings = SubResource("LabelSettings_q176i")
 
-[node name="Bottom" type="Control" parent="CanvasLayer"]
+[node name="Bottom" type="Control" parent="CanvasLayer" unique_id=1428245370]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -104,7 +105,7 @@ offset_top = -648.0
 offset_bottom = -648.0
 grow_vertical = 0
 
-[node name="Instructions" type="TextureRect" parent="CanvasLayer/Bottom"]
+[node name="Instructions" type="TextureRect" parent="CanvasLayer/Bottom" unique_id=509074489]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 375.0
@@ -113,7 +114,29 @@ offset_bottom = 887.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("22_pm3ni")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TouchControls" type="Control" parent="CanvasLayer" unique_id=1022017287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_og1vs")
+instructions = NodePath("../Bottom/Instructions")
+
+[node name="SaveButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=187846286]
+
+[node name="LoadButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=1663539310]
+
+[node name="StructurePreviousButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=1081896594]
+
+[node name="RotateButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=464651740]
+
+[node name="StructureNextButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=280537306]
+
+[node name="CameraCenterButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=2101223599]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1550957440]
 stream = ExtResource("24_y6deb")
 volume_db = -30.0
 autoplay = true

@@ -42,8 +42,11 @@ const TOUCH_TAP_MOVE_CANCEL_DISTANCE:float = 18.0
 const MOUSE_MOVE_CANCEL_DISTANCE:float = 8.0
 const TOUCH_MOUSE_SUPPRESSION_SECONDS:float = 0.75
 const TWO_FINGER_TAP_SECONDS:float = 0.25
+const TOUCH_ROTATE_ACTION := &"touch_rotate"
 
 func _ready():
+	if not InputMap.has_action(TOUCH_ROTATE_ACTION):
+		InputMap.add_action(TOUCH_ROTATE_ACTION)
 	
 	map = DataMap.new()
 	plane = Plane(Vector3.UP, Vector3.ZERO)
@@ -95,7 +98,7 @@ func _process(delta):
 	action_build(gridmap_position)
 	action_demolish(gridmap_position)
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		pointer_screen_position = event.position
 		pointer_is_touch = false
@@ -326,7 +329,7 @@ func should_ignore_mouse_after_touch():
 # Rotates the 'cursor' 90 degrees
 
 func action_rotate():
-	if rotate_requested:
+	if rotate_requested or Input.is_action_just_pressed(TOUCH_ROTATE_ACTION):
 		rotate_requested = false
 		selector.rotate_y(deg_to_rad(90))
 		
