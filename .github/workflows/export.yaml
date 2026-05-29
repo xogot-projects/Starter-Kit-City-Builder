@@ -16,6 +16,7 @@ jobs:
       GODOT_ASSET_ID: ${{ vars.GODOT_ASSET_ID }}
       XOGOT_ASSET_ID: ${{ vars.XOGOT_ASSET_ID }}
       version: ${{ github.ref_name }}
+      GODOT_VERSION: ${{ vars.GODOT_VERSION }}
       TAGS: ${{ vars.TAGS }}
       ICON_URL: ${{ vars.ICON_URL }}
       EXTRA_ARGS: ${{ vars.EXTRA_ARGS }}
