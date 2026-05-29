@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Export to Asset-lib
-    runs-on: macos-latest
+    runs-on: ${{ vars.ACTIONS_RUNNER }}
 
     env:
       uploadUrl: ${{ secrets.uploadUrl }}
@@ -37,10 +37,4 @@ jobs:
       run: |
         curl -L "$BUILD_SCRIPT_URL" -o build.sh
         chmod +x build.sh
-        echo "Godot diagnostics:"
-        godot --version
-        which godot
-        uname -a
-        sysctl -n machdep.cpu.brand_string || true
-        sysctl -n hw.memsize || true
         ./build.sh
