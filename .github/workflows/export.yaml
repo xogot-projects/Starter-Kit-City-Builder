@@ -37,4 +37,10 @@ jobs:
       run: |
         curl -L "$BUILD_SCRIPT_URL" -o build.sh
         chmod +x build.sh
+        echo "Godot diagnostics:"
+        godot --version
+        which godot
+        uname -a
+        sysctl -n machdep.cpu.brand_string || true
+        sysctl -n hw.memsize || true
         ./build.sh
