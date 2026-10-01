@@ -1,0 +1,9 @@
+name: Upload script checks
+on: [push, pull_request]
+jobs:
+  syntax:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check uploader Bash syntax
+        run: bash -n .github/scripts/build.sh
